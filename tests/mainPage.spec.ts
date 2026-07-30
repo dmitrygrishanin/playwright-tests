@@ -125,4 +125,13 @@ test.describe('Main page tests', () => {
     await page.getByRole('button', { name: 'Switch between dark and light' }).click();
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   });
+
+  ['light', 'dark'].forEach((value) => {
+    test(`Check style of active ${value} mode`, async ({ page }) => {
+      await page.evaluate((value) => {
+        document.querySelector('html')?.setAttribute('data-theme', value);
+      }, value);
+      await expect(page).toHaveScreenshot(`image-${value}.png`);
+    });
+  });
 });
