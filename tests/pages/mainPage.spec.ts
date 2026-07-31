@@ -1,4 +1,4 @@
-import { test } from '@playwright/test';
+import { test } from '../fixtures/mainPage';
 import { MainPage } from '../models/MainPage';
 
 let mainPage: MainPage;
@@ -17,7 +17,7 @@ test.describe('Main page tests', () => {
     await mainPage.checkElementsText();
   });
 
-  test('Check href attribute values of elements on the header page', async () => {
+  test('Check href attribu te values of elements on the header page', async () => {
     await mainPage.checkElementsHrefAttribute();
   });
 
